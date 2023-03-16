@@ -1,0 +1,27 @@
+ventana_hasta = 5 # Dias en el cual quiero medir la diferencia de temperatura
+# lista = [1, 4, 8, 2, 5, 7, 3, 9, 5, 1, 10, 11, 12, 4, 5, 6, 7, 3, 8] # Lista de pruebas
+lista = ['25', '25', '25', '25', '25', '25', '25', '31', '25', '25', '25', '26', '28', '28', '45', '29', '29', '25', '25', '25', '25', '25', '25', '29', '28', '28', '10', '29', '29', '29', '29', '29', '25', '26', '26', '26', '26', '26', '26', '29', '29', '29', '28', '29', '29', '29', '29', '28', '28', '29', '27', '24', '24', '27', '27', '27', '27', '29', '28', '28', '25', '25', '25', '25', '25', '25', '25', '28', '28', '29', '28', '29', '28', '28', '26', '26', '26', '26', '26', '26', '26', '30']
+cantidad_de_item = 5
+
+
+
+lista_aux = []
+dict_de_dias_5_grados = {}
+vente_y_tres = 0
+for x in range(0, len(lista), cantidad_de_item): # Bucle que se encarga de coger la lista aux de solo cogemos lo que tenemos en cantidad_de_item
+    vente_y_tres += 1
+    lista_aux = lista[x:x+cantidad_de_item] # Lista donde se guarda 
+    z = 0 # 2 Variables, donde utilizamos en el bucle de diferencia de temps
+    b = 0
+    for i in lista_aux: # Itero con la lista (en la cual solo tengo cantidad_de_item), para coger cada item de la lista, y poder trabajar con el
+        vente_y_tres += 1
+        z += 1 # Sumo esta variable, para coger siempre el numero siguiente a la lista
+        if z >= len(lista_aux): # Esto es para parar cuando z llega al ultimo numero de la lista
+            break
+        b += abs(int(i)-int(lista_aux[z])) # La diferencia de cada item, la guardo en b
+        if b > 5: # Si b es igual a los grados que queremos medir, paro ahi
+            dict_de_dias_5_grados[vente_y_tres] = str(x+1), str(x+cantidad_de_item)
+            print("Hay una diferencia de 5 grados. Entre los dias", x+1, "y", x+cantidad_de_item)
+            break
+
+print(dict_de_dias_5_grados)
